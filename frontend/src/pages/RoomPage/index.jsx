@@ -5,6 +5,7 @@ import "./index.css";
 import WhiteBoard from "../../components/Whiteboard";
 import Chat from "../../components/ChatBar";
 import { toast } from "react-toastify";
+// import { useHistory } from "react-router-dom";
 
 const RoomPage = ({
     user,
@@ -16,6 +17,7 @@ const RoomPage = ({
     setPeers,
     connectToNewUser,
     addVideoStream,
+
 }) => {
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -110,6 +112,11 @@ const RoomPage = ({
         });
     }, []);
 
+
+    // the loggout faeture
+    const handleLogout = () => {
+        history.push("/");
+    };
     return (
         <div className="row">
             <button
@@ -170,7 +177,11 @@ const RoomPage = ({
                 White Board Sharing App{" "}
                 <span className="text-primary">[Users Online : {users.length}]</span>
             </h1>
-                
+            <div className="col-md-2">
+                <button className="btn btn-danger" >
+                    LogOut
+                </button>
+            </div>
             {user?.presenter && (
                 <div className="col-md-10 mx-auto px-5 mb-3 d-flex align-items-center jusitfy-content-center">
                     <div className="d-flex col-md-2 justify-content-center gap-1">
